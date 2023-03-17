@@ -1,0 +1,46 @@
+
+
+<div class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+
+            <mat-card class="card">
+
+                <mat-card-header class="title"><h2>Adding Questions to {{qTitle}}</h2></mat-card-header>
+                <mat-divider></mat-divider>
+
+                <mat-card class="card"  *ngFor="let q of questions; let i = index"> 
+                    <mat-card-content>
+
+                     <h3> Q{{i+1}}/- <span [innerHTML]="q.content"></span></h3>
+
+                        <div class="container-fluid ">
+                            <div class="row mt10">
+                                <div class="col-md-6">
+                                    <h4>1/- {{q.option1}}</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>2/- {{q.option2}}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>3/- {{q.option3}}</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>4/- {{q.option4}}</h4>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <h4 class="mt10">Correct Answer :- {{q.answer}}</h4>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+
+                
+
+            </mat-card>
+
+        </div>
+    </div>
+</div>
