@@ -6,26 +6,28 @@ import { Injectable } from '@angular/core';
 })
 export class QuizService {
 
+  baseurl ='http://localhost:8080/';
+
   constructor(private _http:HttpClient) { }
 
   public quizzes(){
-    return this._http.get('http://localhost:8080/quiz/')
+    return this._http.get(this.baseurl+'quiz/')
   }
 
   public addQuiz(quiz){
-    return this._http.post('http://localhost:8080/quiz/',quiz);
+    return this._http.post(this.baseurl+'quiz/',quiz);
   }
 
   public deleteQuiz(id){
-    return this._http.delete('http://localhost:8080/quiz/'+id);
+    return this._http.delete(this.baseurl+'quiz/'+id);
   }
 
   public getSingleQuizById(id){
-    return this._http.get('http://localhost:8080/quiz/'+id)
+    return this._http.get(this.baseurl+'quiz/'+id)
   }
 
   public updateQuiz(quizdata){
-    return this._http.put('http://localhost:8080/quiz/',quizdata);
+    return this._http.put(this.baseurl+'quiz/',quizdata);
   }
 
 }

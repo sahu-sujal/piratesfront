@@ -7,19 +7,21 @@ import { Subject } from 'rxjs';
 })
 export class LoginService {
 
+  baseurl ='http://localhost:8080/';
+
   public loginStatusSubject = new Subject<boolean>();
 
   constructor(private http:HttpClient) {}
 
   //Current User details Which Is login 
   public getCurrentUser(){
-    return this.http.get('http://localhost:8080/current-user');
+    return this.http.get(this.baseurl+'current-user');
   }
 
   //generate Token
   public generateToken(loginData:any){
 
-    return this.http.post('http://localhost:8080/generate-token',loginData);
+    return this.http.post(this.baseurl+'generate-token',loginData);
   }
 
   //Login User: Set token in Local Storage

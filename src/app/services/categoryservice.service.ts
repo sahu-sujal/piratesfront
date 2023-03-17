@@ -6,30 +6,32 @@ import { Injectable } from '@angular/core';
 })
 export class CategoryserviceService {
 
+  baseurl ='http://localhost:8080/';
+
   constructor(private http:HttpClient) { }
 
   //load all the category
   public categories(){
-    return this.http.get('http://localhost:8080/category/');
+    return this.http.get(this.baseurl+'category/');
   }
 
   //add new category
   public addCategory(category){
-    return this.http.post('http://localhost:8080/category/',category)
+    return this.http.post(this.baseurl+'category/',category)
   }
 
   //delete category
   public deleteCategory(id){
-    return this.http.delete('http://localhost:8080/category/'+id);
+    return this.http.delete(this.baseurl+'category/'+id);
   }
 
   //update categroy
   public updateCategory(update){
-    return this.http.put('http://localhost:8080/category/',update);
+    return this.http.put(this.baseurl+'category/',update);
   }
 
   //get single category by id
   public getCategoryById(id){
-    return this.http.get('http://localhost:8080/category/'+id);
+    return this.http.get(this.baseurl+'category/'+id);
   }
 }
