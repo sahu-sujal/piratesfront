@@ -15,7 +15,7 @@
         <mat-divider></mat-divider>
         <div [innerHTML]="a.article" class="mt20 mb20" style="white-space: pre-wrap"></div>
         <mat-divider></mat-divider>
-        <button mat-raised-button class="btn" color="primary"> Attemp Quiz</button>
+        <button mat-raised-button class="btn" color="primary" [routerLink]="'/admin/view-questions/'+a.qid+'/'+a.title">Questions</button>
         <button mat-stroked-button class="btn" color="primary"> Maximun Marks :{{a.maxMarks}}</button>
         <button mat-stroked-button class="btn" color="primary"> Questions :{{a.numberOfQuestions}}</button>
         <button mat-raised-button class="btn" color="primary" [routerLink]="'/admin/quiz/'+a.qid"> Update</button>
