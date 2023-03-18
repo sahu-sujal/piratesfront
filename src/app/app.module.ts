@@ -37,6 +37,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
+import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questi
     AddQuizComponent,
     UpdateQuizComponent,
     ViewQuestionsComponent,
+    AddQuestionsComponent,
   ],
   imports: [
     BrowserModule,

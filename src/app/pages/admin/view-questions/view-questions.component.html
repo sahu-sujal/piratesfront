@@ -1,5 +1,4 @@
 
-
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-md-12">
@@ -9,10 +8,10 @@
                 <mat-card-header class="title"><h2>Adding Questions to {{qTitle}}</h2></mat-card-header>
                 <mat-divider></mat-divider>
 
-                <mat-card class="card"  *ngFor="let q of questions; let i = index"> 
+                <mat-card class="card1"  *ngFor="let q of questions; let i = index"> 
                     <mat-card-content>
 
-                     <h3> Q{{i+1}}/- <span [innerHTML]="q.content"></span></h3>
+                     <h3> Q{{i+1}}/- <span [innerHTML]="q.content" style="white-space: pre-wrap"></span></h3>
 
                         <div class="container-fluid ">
                             <div class="row mt10">
@@ -37,8 +36,11 @@
                     </mat-card-content>
                 </mat-card>
 
-                
+                <div class="container text-center">
+                    <button mat-raised-button class=" mb20 mt20" color="primary" [routerLink]="'/admin/add-questions/'+qId+'/'+qTitle"> Add Questions</button>
 
+                </div>
+                
             </mat-card>
 
         </div>
