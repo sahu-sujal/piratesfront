@@ -73,7 +73,7 @@ const routes: Routes = [
         path:'add-questions/:qid/:title',
         component:AddQuestionsComponent
       },{
-        path:'update-questions/:quesId',
+        path:'update-questions/:quesId/:title',
         component:UpdateQuestionComponent
       }
     ],

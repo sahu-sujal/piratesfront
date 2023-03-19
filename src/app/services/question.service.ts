@@ -21,4 +21,13 @@ export class QuestionService {
   public deleteQuestionByID(quesId){
     return this._http.delete(this.baseurl+'question/'+quesId);
   }
+
+  public getQuestionById(Id){
+    return this._http.get(this.baseurl+'question/'+Id);
+  }
+
+  public updateQuestion(question){
+    return this._http.put(this.baseurl+'question/',question);
+  }
+
 }
