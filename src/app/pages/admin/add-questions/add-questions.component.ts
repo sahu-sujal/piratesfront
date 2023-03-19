@@ -11,8 +11,6 @@ import Swal from 'sweetalert2';
 
 export class AddQuestionsComponent implements OnInit {
 
- 
-  
   qId;
   qTitle;
 
@@ -38,7 +36,7 @@ export class AddQuestionsComponent implements OnInit {
   }
 
   addQuestion(){
-    if(this.questions.content.trim() == '' || this.questions.content == null || this.questions.option1.trim() == '' || this.questions.option1 == null ||this.questions.option2.trim() == '' || this.questions.option2 == null || this.questions.option3.trim() == '' || this.questions.option3 == null || this.questions.option4.trim() == '' || this.questions.option4 == null || this.questions.answer.trim() == '' || this.questions.answer == null){
+    if(this.questions.content.trim() == '' || this.questions.content == null || this.questions.option1.trim() == '' || this.questions.option1 == null ||this.questions.option2.trim() == '' || this.questions.option2 == null ||this.questions.answer.trim() == '' || this.questions.answer == null){
       Swal.fire('error','filed is required','error');
       return;
     }
@@ -47,7 +45,13 @@ export class AddQuestionsComponent implements OnInit {
       (data)=>{
 
         Swal.fire('success','Successfully Added Question to quiz','success');
-        console.log(data);
+        this.questions.content='';
+        this.questions.answer='';
+        this.questions.option1='';
+        this.questions.option2='';
+        this.questions.option3='';
+        this.questions.option4='';
+        this.questions.answer='';
 
       },
       (error)=>{
@@ -56,6 +60,15 @@ export class AddQuestionsComponent implements OnInit {
       }
     );
 
+  }
+
+  clearanimation(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Successfully cleared',
+      showConfirmButton: false,
+      timer: 1000
+    })
   }
 
 }

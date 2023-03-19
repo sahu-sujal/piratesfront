@@ -1,17 +1,18 @@
-
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-md-12">
 
             <mat-card class="card">
 
-                <mat-card-header class="title"><h2>Adding Questions to {{qTitle}}</h2></mat-card-header>
+                <mat-card-header class="title">
+                    <h2>Adding Questions to {{qTitle}}</h2>
+                </mat-card-header>
                 <mat-divider></mat-divider>
 
-                <mat-card class="card1"  *ngFor="let q of questions; let i = index"> 
+                <mat-card class="card1" *ngFor="let q of questions; let i = index">
                     <mat-card-content>
 
-                     <h3> Q{{i+1}}/- <span [innerHTML]="q.content" style="white-space: pre-wrap"></span></h3>
+                        <h3> Q{{i+1}}/- <span [innerHTML]="q.content" style="white-space: pre-wrap"></span></h3>
 
                         <div class="container-fluid ">
                             <div class="row mt10">
@@ -31,16 +32,27 @@
                                 </div>
                             </div>
                             <mat-divider></mat-divider>
-                            <h4 class="mt10">Correct Answer :- {{q.answer}}</h4>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <button mat-stroked-button class="mt10 ml20" color="primary"> Correct Answer :-
+                                        {{q.answer}}</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button mat-raised-button class="mt10" (click)="deletequestion(q.quesId)" color="primary">
+                                        Delete</button>
+                                    <button mat-raised-button class="mt10 ml20" color="primary" [routerLink]="'/admin/update-questions/'+q.quesId"> Update</button>
+                                </div>
+                            </div>
                         </div>
                     </mat-card-content>
                 </mat-card>
 
                 <div class="container text-center">
-                    <button mat-raised-button class=" mb20 mt20" color="primary" [routerLink]="'/admin/add-questions/'+qId+'/'+qTitle"> Add Questions</button>
+                    <button mat-raised-button class=" mb20 mt20" color="primary"
+                        [routerLink]="'/admin/add-questions/'+qId+'/'+qTitle"> Add Questions</button>
 
                 </div>
-                
+
             </mat-card>
 
         </div>

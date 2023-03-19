@@ -25,7 +25,8 @@ export class ViewQuestionsComponent implements OnInit{
     this.qTitle = this._route.snapshot.params['title'];
     this._question.getQuestionOfQuiz(this.qId).subscribe(
       (data:any)=>{
-        this.questions=data;    
+        this.questions=data;   
+        console.log(this.questions)
       },
       (error)=>{
        Swal.fire('error','Unable to Load data from Server','error');
@@ -34,4 +35,33 @@ export class ViewQuestionsComponent implements OnInit{
       
   }
 
+  deletequestion(quesId){
+    Swal.fire({
+      icon: 'info',
+      title: 'Are you Sure ?',
+      confirmButtonText: 'Delete',
+      showCancelButton: true,
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+        this._question.deleteQuestionByID(quesId).subscribe(
+          (data)=>{
+            Swal.fire('Success','Successfully delete the quiz','success');
+            this.questions=this.questions.filter((question) => question.quesId!=quesId)
+          },
+          (error)=>{
+        
+            Swal.fire('Error','Unable to delete','error');
+            console.log(error);
+        
+          }
+        )
+        
+      }
+
+    })
+  }
+
 }
+
