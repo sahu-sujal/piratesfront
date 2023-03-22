@@ -39,6 +39,10 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { UserSlidebarComponent } from './pages/user/user-slidebar/user-slidebar.component';
+import { UserLodaquizComponent } from './pages/user/user-lodaquiz/user-lodaquiz.component';
+import { UserHomeComponent } from './pages/user/user-home/user-home.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,9 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     ViewQuestionsComponent,
     AddQuestionsComponent,
     UpdateQuestionComponent,
+    UserSlidebarComponent,
+    UserLodaquizComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +90,7 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     MatExpansionModule,
     MatSlideToggleModule,
     MatSelectModule,
+    CKEditorModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

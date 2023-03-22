@@ -17,71 +17,89 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
+import { UserHomeComponent } from './pages/user/user-home/user-home.component';
+import { UserLodaquizComponent } from './pages/user/user-lodaquiz/user-lodaquiz.component';
 import { AdminGuard } from './services/admin.guard';
 import { NormalGuard } from './services/normal.guard';
 
 const routes: Routes = [
   {
-    path:'login',
-    component:LoginComponent,
-    pathMatch:'full',
-  },{
-    path:'signup',
-    component:SignupComponent,
-    pathMatch:'full',
-  },{
-    path:'',
-    component:HomeComponent,
-    pathMatch:'full'
-  },{
-    path:'admin',
-    component:AdminDashboardComponent,
-    canActivate:[AdminGuard],
-    children:[
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full',
+  }, {
+    path: 'signup',
+    component: SignupComponent,
+    pathMatch: 'full',
+  }, {
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full'
+  }, {
+    path: 'admin',
+    component: AdminDashboardComponent,
+    canActivate: [AdminGuard],
+    children: [
       {
-        path:'',
-        component:WelcomeComponent,
+        path: '',
+        component: WelcomeComponent,
       },
       {
-        path:'profile',
-        component:ProfileComponent,
-      },{
-        path:'categories',
-        component:ViewCategoriesComponent,
-      },{
-        path:'addcategories',
-        component:AddCategoryComponent
-      },{
-        path:'contributers',
-        component:ContributersComponent
-      },{
-        path:'categories/:cid',
-        component:DeletecategoryComponent
-      },{
-        path:'article',
-        component:ViewQuizzesComponent
-      },{
-        path:'addArticle',
-        component:AddQuizComponent
-      },{
-        path:'quiz/:qid',
+        path: 'profile',
+        component: ProfileComponent,
+      }, {
+        path: 'categories',
+        component: ViewCategoriesComponent,
+      }, {
+        path: 'addcategories',
+        component: AddCategoryComponent
+      }, {
+        path: 'contributers',
+        component: ContributersComponent
+      }, {
+        path: 'categories/:cid',
+        component: DeletecategoryComponent
+      }, {
+        path: 'article',
+        component: ViewQuizzesComponent
+      }, {
+        path: 'addArticle',
+        component: AddQuizComponent
+      }, {
+        path: 'quiz/:qid',
         component: UpdateQuizComponent
-      },{
-        path:'view-questions/:qid/:title',
+      }, {
+        path: 'view-questions/:qid/:title',
         component: ViewQuestionsComponent
-      },{
-        path:'add-questions/:qid/:title',
-        component:AddQuestionsComponent
-      },{
-        path:'update-questions/:quesId/:title',
-        component:UpdateQuestionComponent
+      }, {
+        path: 'add-questions/:qid/:title',
+        component: AddQuestionsComponent
+      }, {
+        path: 'update-questions/:quesId/:title',
+        component: UpdateQuestionComponent
       }
     ],
-  },{
-    path:'user-dashboard',
-    component:UserDashboardComponent,
-    pathMatch:'full',
-    canActivate:[NormalGuard],
+  }, {
+    path: 'user-dashboard',
+    component: UserDashboardComponent,
+    canActivate: [NormalGuard],
+    children: [
+      {
+        path: '',
+        component: UserHomeComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'article/:catId',
+        component: UserLodaquizComponent,
+      }, {
+        path: 'contributers',
+        component: ContributersComponent
+      }
+    ]
   }
 ];
 
