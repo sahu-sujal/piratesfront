@@ -11,7 +11,7 @@
                         <mat-card-header>
                             <div mat-card-avatar class="icone"></div>
                             <mat-card-title>
-                                {{q.title}}
+                                <span class="artitle">{{q.title}}</span>
                             </mat-card-title>
                             <mat-card-subtitle>
                                 {{q.category.title}}
@@ -21,8 +21,20 @@
                             <p class="truncate">{{q.description}}</p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button color="primary"><h3>View Article -></h3></button>
+                            <button mat-raised-button class="btn" [routerLink]="'/user-dashboard/readarticle/'+q.qid" color="primary">View</button>
+                            <button mat-stroked-button class="btn" color="warn">Questions:{{q.numberOfQuestions}}</button>
+                            <button mat-stroked-button class="btn" color="warn"> MM:{{q.maxMarks}}</button>
                         </mat-card-actions>
+                    </mat-card>
+                </div>
+
+                <div *ngIf="quizzes.length == 0 " class="col-md-12">
+                    <mat-card class="card2">
+                        <mat-card-content>
+                            <h1>
+                                This category Doesn't have articles
+                            </h1>
+                        </mat-card-content>
                     </mat-card>
                 </div>
             </div>

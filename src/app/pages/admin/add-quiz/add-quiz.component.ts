@@ -52,6 +52,11 @@ export class AddQuizComponent implements OnInit {
       Swal.fire("Error","field is required","error");
       return;
     }
+    let mm=150;
+    if(this.quizData.maxMarks > '200' || this.quizData.numberOfQuestions > '20'){
+      Swal.fire("Error","Maximum marks can't be more the 200","error");
+      return;
+    }
     
     this._quiz.addQuiz(this.quizData).subscribe(
      (data:any)=>{

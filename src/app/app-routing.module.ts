@@ -16,6 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { UserArticleComponent } from './pages/user/user-article/user-article.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { UserHomeComponent } from './pages/user/user-home/user-home.component';
 import { UserLodaquizComponent } from './pages/user/user-lodaquiz/user-lodaquiz.component';
@@ -95,6 +96,9 @@ const routes: Routes = [
       {
         path: 'article/:catId',
         component: UserLodaquizComponent,
+      },{
+        path:'readarticle/:quizId',
+        component:UserArticleComponent
       }, {
         path: 'contributers',
         component: ContributersComponent

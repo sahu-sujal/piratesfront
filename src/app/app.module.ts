@@ -43,6 +43,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { UserSlidebarComponent } from './pages/user/user-slidebar/user-slidebar.component';
 import { UserLodaquizComponent } from './pages/user/user-lodaquiz/user-lodaquiz.component';
 import { UserHomeComponent } from './pages/user/user-home/user-home.component';
+import { UserArticleComponent } from './pages/user/user-article/user-article.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { UserHomeComponent } from './pages/user/user-home/user-home.component';
     UserSlidebarComponent,
     UserLodaquizComponent,
     UserHomeComponent,
+    UserArticleComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,3 +18,10 @@
     background-image: url('../../../../assets/Profile/article.png');
     background-size: cover;
 }
+.btn{
+    margin-top: 15px;
+    margin-left: 2%;
+  }
+.artitle{
+    font-size: medium;
+}

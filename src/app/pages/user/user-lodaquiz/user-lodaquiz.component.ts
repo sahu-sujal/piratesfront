@@ -19,30 +19,45 @@ export class UserLodaquizComponent implements OnInit{
 
   ngOnInit(): void {
       
-    this.catId=this._route.snapshot.params['catId'];
+    
 
-    if(this.catId == 0){
-      this._quiz.quizzes().subscribe(
-        (data)=>{
+    this._route.params.subscribe(
+      (params:any)=>{
+        this.catId=params.catId;
 
-          this.quizzes=data;
-          console.log(this.quizzes);
-
-        },
-        (error)=>{
-
-          Swal.fire('error','Unable to fetch data from the server','error');
-          console.log(error);
+        if(this.catId == 0){
+          this._quiz.quizzes().subscribe(
+            (data)=>{
+    
+              this.quizzes=data;
+              console.log(this.quizzes);
+    
+            },
+            (error)=>{
+    
+              Swal.fire('error','Unable to fetch data from the server','error');
+              console.log(error);
+    
+            }
+          )
+        }else{
+          
+          this.quizzes=[];
+          this._quiz.getQuizzesOfCategory(this.catId).subscribe(
+            (data)=>{
+              console.log(data);
+              this.quizzes=data;
+            },
+            (error)=>{
+              Swal.fire('Error','unable to load quiz data','error');
+            }
+            
+          )
 
         }
-      )
+      });
 
-
-    }else{
-
-      alert('load Specific Quiz');
-
-    }
+    
   }
 
 }
