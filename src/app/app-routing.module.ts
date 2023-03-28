@@ -78,6 +78,12 @@ const routes: Routes = [
       }, {
         path: 'update-questions/:quesId/:title',
         component: UpdateQuestionComponent
+      },{
+        path: 'article/:catId',
+        component: UserLodaquizComponent,
+      },{
+        path:'readarticle/:quizId',
+        component:UserArticleComponent
       }
     ],
   }, {

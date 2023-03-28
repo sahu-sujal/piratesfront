@@ -21,7 +21,8 @@
                             <p class="truncate">{{q.description}}</p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-raised-button class="btn" [routerLink]="'/user-dashboard/readarticle/'+q.qid" color="primary">View</button>
+                            <button mat-raised-button class="btn" *ngIf="role=='NORMAL'" [routerLink]="'/user-dashboard/readarticle/'+q.qid" color="primary">View</button>
+                            <button mat-raised-button class="btn" *ngIf="role=='ADMIN'" [routerLink]="'/admin/readarticle/'+q.qid" color="primary">View</button>
                             <button mat-stroked-button class="btn" color="warn">Questions:{{q.numberOfQuestions}}</button>
                             <button mat-stroked-button class="btn" color="warn"> MM:{{q.maxMarks}}</button>
                         </mat-card-actions>
