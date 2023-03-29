@@ -161,7 +161,7 @@ h3 {
 
 /*--contact us--*/
 .cta {
-    margin: 100px auto;
+    margin: 70px auto;
     width: 80%;
     background-image: linear-gradient(rgba(77, 32, 32, 0.603), rgba(185, 70, 70, 0.7)), url(../../../assets/anonymous-hacker-data-breach-5k-6000x4004-7.jpg);
     background-position: center;
@@ -169,6 +169,7 @@ h3 {
     border-radius: 20px;
     text-align: center;
     padding: 60px 0;
+    margin-bottom: 30px;
 }
 .cta:hover,
 .cta:focus,

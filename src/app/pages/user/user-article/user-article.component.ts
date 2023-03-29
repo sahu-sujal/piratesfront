@@ -1,5 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
 
@@ -12,8 +13,9 @@ export class UserArticleComponent implements OnInit{
 
   qid;
   quiz;
+  role;
 
-  constructor(private _quiz:QuizService , private _route:ActivatedRoute){
+  constructor(private _quiz:QuizService , private _route:ActivatedRoute , private _login:LoginService){
 
   }
 
@@ -30,6 +32,6 @@ export class UserArticleComponent implements OnInit{
        Swal.fire("Error","Unable to fetch data","error");
       }
     )
-      
+      this.role=this._login.getUserRole();
   }
 }

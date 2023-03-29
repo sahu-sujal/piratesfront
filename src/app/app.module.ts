@@ -44,6 +44,7 @@ import { UserSlidebarComponent } from './pages/user/user-slidebar/user-slidebar.
 import { UserLodaquizComponent } from './pages/user/user-lodaquiz/user-lodaquiz.component';
 import { UserHomeComponent } from './pages/user/user-home/user-home.component';
 import { UserArticleComponent } from './pages/user/user-article/user-article.component';
+import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-instructions.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { UserArticleComponent } from './pages/user/user-article/user-article.com
     UserLodaquizComponent,
     UserHomeComponent,
     UserArticleComponent,
+    QuizInstructionsComponent,
   ],
   imports: [
     BrowserModule,

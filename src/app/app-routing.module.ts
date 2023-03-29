@@ -16,6 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-instructions.component';
 import { UserArticleComponent } from './pages/user/user-article/user-article.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { UserHomeComponent } from './pages/user/user-home/user-home.component';
@@ -84,6 +85,9 @@ const routes: Routes = [
       },{
         path:'readarticle/:quizId',
         component:UserArticleComponent
+      },{
+        path:'quizinstructions/:quizId',
+        component:QuizInstructionsComponent
       }
     ],
   }, {
@@ -108,6 +112,9 @@ const routes: Routes = [
       }, {
         path: 'contributers',
         component: ContributersComponent
+      },{
+        path:'quizinstructions/:quizId',
+        component:QuizInstructionsComponent
       }
     ]
   }
