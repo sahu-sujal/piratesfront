@@ -26,12 +26,7 @@
         <h3>Logout</h3>
     </a>
 
-    <a style="margin-right:50px;" [routerLink]="'/admin/profile'" *ngIf="isLoggedIn && user && role=='ADMIN'" mat-icon-button class="example-icon favorite-icon  ml20"
-        aria-label="Example icon-button with heart icon">
-        <h3>{{user.username}}</h3>
-    </a>
-
-    <a style="margin-right:50px;" [routerLink]="'/user-dashboard/profile'" *ngIf="isLoggedIn && user && role=='NORMAL'" mat-icon-button class="example-icon favorite-icon  ml20"
+    <a style="margin-right:50px;" [routerLink]="'/admin/profile'" *ngIf="isLoggedIn && user" mat-icon-button class="example-icon favorite-icon  ml20"
         aria-label="Example icon-button with heart icon">
         <h3>{{user.username}}</h3>
     </a>
