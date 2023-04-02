@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ export class QuizInstructionsComponent implements OnInit{
   quizData;
   role;
 
-  constructor(private _quiz:QuizService , private _route:ActivatedRoute , private _login:LoginService){
+  constructor(private _quiz:QuizService , private _route:ActivatedRoute , private _login:LoginService, private _router:Router){
 
   }
 
@@ -39,6 +39,32 @@ export class QuizInstructionsComponent implements OnInit{
         }
       )
       
+  }
+
+  startquiz(){
+
+    Swal.fire({
+      title:'Do you want to start the quiz >',
+      showCancelButton: true,
+      confirmButtonText: 'Start',
+      icon:'info'
+    }).then((result)=>{
+      if(result.isConfirmed){
+        if(this.role == 'NORMAL'){
+          this._router.navigate(['/start-quiz/'+this.quizID]);
+        }else if(this.role == 'ADMIN'){
+          this._router.navigate(['/admin-start-quiz/'+this.quizID]);
+        }
+      }else if(result.isDismissed){
+        if(this.role == 'NORMAL'){
+          this._router.navigate(['/user-dashboard/readarticle/'+this.quizID]);
+        }else if(this.role == 'ADMIN'){
+          this._router.navigate(['/admin/readarticle/'+this.quizID]);
+        }
+        this._router.navigate(['/user-dashboard/readarticle/'+this.quizID]);
+      }
+    })
+    
   }
   
 }

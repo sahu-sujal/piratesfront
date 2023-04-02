@@ -1,0 +1,49 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <!-- instructions -->
+
+
+            </div>
+            <div class="col-md-8">
+                <!-- questions -->
+                <ng-container *ngIf="questions">
+                    <mat-card class="card2">
+                        <h2 class="text-center">{{ questions[0].quiz.title}}</h2>
+
+                        <mat-divider></mat-divider>
+
+                        <mat-card-content *ngFor="let q of questions; let i = index" class="mt20">
+                            
+                            <label><h3> Q{{i+1}}/- <span [innerHTML]="q.content" style="white-space: pre-wrap"></span></h3></label>
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" required>
+                                <mat-radio-button class="example-radio-button" color="primary" [value]="q.option1" [name]="''+i">
+                                    {{q.option1}}
+                                </mat-radio-button>
+                                <mat-radio-button class="example-radio-button" color="primary" [value]="q.option2"[name]="''+i">
+                                    {{q.option2}}
+                                </mat-radio-button>
+                                <mat-radio-button class="example-radio-button" color="primary" *ngIf="q.option3" [value]="q.option3" [name]="''+i">
+                                    {{q.option3}}
+                                </mat-radio-button>
+                                <mat-radio-button class="example-radio-button" color="primary" *ngIf="q.option4" [value]="q.option4" [name]="''+i">
+                                    {{q.option4}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </mat-card-content>
+                        <mat-divider></mat-divider>
+                        <div class="container text-center mt10 mb10">
+                            <button  mat-raised-button color="primary">
+                                Submit
+                            </button>
+                        </div>
+                    </mat-card>
+                </ng-container>
+            </div>
+            <div class="col-md-2">
+                <!-- progress -->
+            </div>
+        </div>
+    </div>
+</div>

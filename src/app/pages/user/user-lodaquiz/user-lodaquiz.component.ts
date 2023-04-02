@@ -1,5 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
 
@@ -12,14 +13,15 @@ export class UserLodaquizComponent implements OnInit{
 
   catId;
   quizzes;
+  role;
 
-  constructor(private _route:ActivatedRoute, private _quiz:QuizService){
+  constructor(private _route:ActivatedRoute, private _quiz:QuizService, private _login:LoginService){
 
   }
 
   ngOnInit(): void {
       
-    
+    this.role=this._login.getUserRole();
 
     this._route.params.subscribe(
       (params:any)=>{

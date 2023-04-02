@@ -38,8 +38,7 @@
                         <mat-card-actions>
                             <div class="mt10 mb10 btn">
                                 <button mat-stroked-button  color="primary"> Maximun Marks:{{quizData.maxMarks}}</button>
-                                <button mat-raised-button *ngIf="role=='ADMIN'" class="ml20"   color="primary">Start Quiz</button> 
-                                <button mat-raised-button *ngIf="role=='NORMAL'" class="ml20"   color="primary">Start Quiz</button> 
+                                <button mat-raised-button class="ml20" (click)="startquiz()"   color="primary">Start Quiz</button> 
                                  <button mat-stroked-button class="ml20" color="primary">No of Questions:{{quizData.numberOfQuestions}}</button>
                             </div>
                         </mat-card-actions>

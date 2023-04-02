@@ -23,6 +23,7 @@ import { UserHomeComponent } from './pages/user/user-home/user-home.component';
 import { UserLodaquizComponent } from './pages/user/user-lodaquiz/user-lodaquiz.component';
 import { AdminGuard } from './services/admin.guard';
 import { NormalGuard } from './services/normal.guard';
+import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
 
 const routes: Routes = [
   {
@@ -117,6 +118,14 @@ const routes: Routes = [
         component:QuizInstructionsComponent
       }
     ]
+  },{
+    path:'start-quiz/:quizId',
+    component:StartQuizComponent,
+    canActivate:[NormalGuard]
+  },{
+    path:'admin-start-quiz/:quizId',
+    component:StartQuizComponent,
+    canActivate:[AdminGuard]
   }
 ];
 

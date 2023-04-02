@@ -45,6 +45,8 @@ import { UserLodaquizComponent } from './pages/user/user-lodaquiz/user-lodaquiz.
 import { UserHomeComponent } from './pages/user/user-home/user-home.component';
 import { UserArticleComponent } from './pages/user/user-article/user-article.component';
 import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-instructions.component';
+import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -74,6 +76,7 @@ import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-i
     UserHomeComponent,
     UserArticleComponent,
     QuizInstructionsComponent,
+    StartQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +98,7 @@ import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-i
     MatSlideToggleModule,
     MatSelectModule,
     CKEditorModule,
+    MatRadioModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
