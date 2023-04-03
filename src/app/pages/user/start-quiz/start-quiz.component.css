@@ -20,3 +20,20 @@ h3{
   .example-radio-button {
     margin: 5px;
   }
+
+  .table{
+    width: 100%;
+    border-collapse: collapse;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+}
+.table tr{
+    border: 1px solid black;
+}
+.table tr td{
+    padding: 15px 10px;
+    border: .5px solid #03030365;
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif;
+}

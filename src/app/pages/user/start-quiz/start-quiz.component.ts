@@ -1,6 +1,7 @@
 import { DOCUMENT, LocationStrategy } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { QuestionService } from 'src/app/services/question.service';
 import Swal from 'sweetalert2';
 
@@ -11,14 +12,23 @@ import Swal from 'sweetalert2';
 })
 export class StartQuizComponent implements OnInit{
  
+  role;
+
   qID;
   questions;
 
-  constructor(private _locationst:LocationStrategy, private _route:ActivatedRoute, @Inject(DOCUMENT) private document: Document, private _question:QuestionService){
+  marksGot=0;
+  correctAnswer=0;
+  attempted=0;
+
+  isSubmit = false;
+
+  constructor(private _login:LoginService,private _locationst:LocationStrategy, private _route:ActivatedRoute, @Inject(DOCUMENT) private document: Document, private _question:QuestionService){
 
   }
 
   ngOnInit(): void {
+     this.role = this._login.getUserRole();
       this.preventVulnerableButton();
       this.qID=this._route.snapshot.params['quizId'];
       this.loadquestions();
@@ -27,6 +37,10 @@ export class StartQuizComponent implements OnInit{
     this._question.getQuestionOfQuizfortest(this.qID).subscribe(
       (data:any)=>{
         this.questions=data;
+
+        this.questions.array.forEach((q) => {
+          q['givenAnswer'] = '';
+        });
       },
       (error)=>{
         Swal.fire('ERROR','unable to load data from server','error');
@@ -40,7 +54,45 @@ export class StartQuizComponent implements OnInit{
       history.pushState(null,null,location.href);
     })
 
-    this.document.addEventListener('contextmenu', (event) => event.preventDefault())
+    // this.document.addEventListener('contextmenu', (event) => event.preventDefault())
       
   }
+
+  submitquiz(){
+
+    Swal.fire({
+      title:'Do you submit the quiz',
+      showCancelButton:true,
+      confirmButtonText:'Yes',
+      cancelButtonText:'No',
+      icon:'info'
+    }).then((e)=>{
+      if(e.isConfirmed){
+
+        this.isSubmit=true;
+        
+        //calculation 
+
+        let marksperquestion = this.questions[0].quiz.maxMarks/this.questions.length
+
+        this.questions.forEach(q=>{
+
+          if(q.givenAnswer == q.answer){
+            
+            this.correctAnswer++;
+            this.marksGot += marksperquestion;
+          }
+          if(q.givenAnswer.trim() != ''){
+            this.attempted++;
+          }
+        })
+
+
+      }
+      
+    })
+
+  }
+
+
 }
