@@ -23,6 +23,8 @@ export class StartQuizComponent implements OnInit{
 
   isSubmit = false;
 
+  timer:any;
+
   constructor(private _login:LoginService,private _locationst:LocationStrategy, private _route:ActivatedRoute, @Inject(DOCUMENT) private document: Document, private _question:QuestionService){
 
   }
@@ -32,11 +34,14 @@ export class StartQuizComponent implements OnInit{
       this.preventVulnerableButton();
       this.qID=this._route.snapshot.params['quizId'];
       this.loadquestions();
+      this.starttimer();
   }
   loadquestions() {
     this._question.getQuestionOfQuizfortest(this.qID).subscribe(
       (data:any)=>{
         this.questions=data;
+
+        this.timer=this.questions.length * 2 * 60;
 
         this.questions.array.forEach((q) => {
           q['givenAnswer'] = '';
@@ -54,7 +59,7 @@ export class StartQuizComponent implements OnInit{
       history.pushState(null,null,location.href);
     })
 
-    // this.document.addEventListener('contextmenu', (event) => event.preventDefault())
+    this.document.addEventListener('contextmenu', (event) => event.preventDefault());
       
   }
 
@@ -68,8 +73,34 @@ export class StartQuizComponent implements OnInit{
       icon:'info'
     }).then((e)=>{
       if(e.isConfirmed){
+        this.evalquiz();
+      }
+      
+    })
 
-        this.isSubmit=true;
+  }
+
+  starttimer()
+  {
+    let t=window.setInterval(()=>{
+      if(this.timer <= 0){
+        this.evalquiz();
+        clearInterval(t);
+      }else{
+        this.timer--;
+      }
+    },1000)
+  }
+
+  getformattedtime(){
+    let mm=Math.floor(this.timer/60);
+    let ss=this.timer-mm*60;
+
+    return mm+' min :'+ss+' sec';
+  }
+
+  evalquiz(){
+    this.isSubmit=true;
         
         //calculation 
 
@@ -86,13 +117,5 @@ export class StartQuizComponent implements OnInit{
             this.attempted++;
           }
         })
-
-
-      }
-      
-    })
-
   }
-
-
 }
