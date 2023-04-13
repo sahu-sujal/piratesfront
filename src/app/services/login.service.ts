@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class LoginService {
 
-  baseurl ='http://localhost:8080/';
+  baseurl ='http://16.170.193.187:8080/';
 
   public loginStatusSubject = new Subject<boolean>();
 
